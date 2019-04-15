@@ -1,33 +1,33 @@
 export default [
   {
-    title: 'List 1',
+    title: 'Ideas',
     id: 0,
     cards: [
       {
         id: 1,
-        text: 'Hello! Card 1'
+        text: 'Snorkeling class'
       },
       {
         id: 2,
-        text: 'Hej! Card 2'
+        text: 'Do your Swedish homework'
       }
     ]
   },
   {
-    title: 'List 2',
+    title: 'In Progress',
     id: 3,
     cards: [
       {
         id: 4,
-        text: 'Hallo! Card 1'
+        text: 'Build your website'
       },
       {
         id: 5,
-        text: 'Zivijo! Card 2'
+        text: 'Get the scarf for your mum!'
       },
       {
         id: 6,
-        text: 'Ciao! Card 3'
+        text: 'Tea with Lorenz'
       }
     ]
   }

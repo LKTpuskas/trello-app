@@ -2,8 +2,8 @@ import { CONSTANTS } from '../../actions'
 import { PURGE } from 'redux-persist'
 import initialData from '../../config/data'
 
-let listID = 7
-let cardID = 8
+let ListId = 7
+let CardId = 8
 
 const initialState = initialData
 
@@ -18,27 +18,27 @@ const listsReducer = (state = initialState, action) => {
       const { title } = action.payload
       const newList = {
         title,
-        id: listID,
+        id: ListId,
         cards: []
       }
-      listID += 1
+      ListId += 1
       return [...state, newList]
     }
 
     case CONSTANTS.ADD_CARD: {
-      const { text, listID } = action.payload
+      const { text, ListId } = action.payload
       const newCard = {
         text,
-        id: cardID
+        id: CardId
       }
-      cardID += 1
+      CardId += 1
 
-      // map over lists, see if their id is the same as the payload id of cards
-      // spead the lists array and current cards - init state
+      // Map over lists, see if their id is the same as the payload id of cards
+      // spead the lists array and current cards - initial state
       // and add the new cards at the end
-      //so we dont modify the existing state
+      // so we don't modify the existing state
       const newState = state.map(list => {
-        if (list.id === listID) {
+        if (list.id === ListId) {
           return {
             ...list,
             cards: [...list.cards, newCard]

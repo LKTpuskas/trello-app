@@ -1,5 +1,5 @@
+// eslint-disable-next-line no-unused-vars
 import React, { Component } from 'react'
-// we expose jsx in Create-React-App, as per emotion docs
 /** @jsx jsx */
 import { css, jsx } from '@emotion/core'
 import { PURGE } from 'redux-persist'
@@ -93,7 +93,7 @@ class App extends Component {
                     key={list.id}
                     title={list.title}
                     cards={list.cards}
-                    listID={list.id}
+                    ListId={list.id}
                   />
                 )
               })}

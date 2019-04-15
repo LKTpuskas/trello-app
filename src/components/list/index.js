@@ -1,3 +1,4 @@
+// eslint-disable-next-line no-unused-vars
 import React from 'react'
 /** @jsx jsx */
 import { css, jsx } from '@emotion/core'
@@ -20,9 +21,9 @@ const listTitle = css`
   margin-left: 0.5rem;
 `
 
-const List = ({ title, cards, listID }) => {
+const List = ({ title, cards, ListId }) => {
   return (
-    <Droppable droppableId={String(listID)}>
+    <Droppable droppableId={String(ListId)}>
       {provided => (
         <div
           css={container}
@@ -40,7 +41,7 @@ const List = ({ title, cards, listID }) => {
               />
             ))}
           {provided.placeholder}
-          <FormContainer listID={listID} />
+          <FormContainer ListId={ListId} />
         </div>
       )}
     </Droppable>
@@ -54,7 +55,7 @@ List.defaultProps = {
 List.propTypes = {
   title: PropTypes.string.isRequired,
   cards: PropTypes.array,
-  listID: PropTypes.number
+  ListId: PropTypes.number
 }
 
 export default List

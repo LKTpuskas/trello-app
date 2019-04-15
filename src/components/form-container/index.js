@@ -12,17 +12,9 @@ class FormContainer extends Component {
     open: false
   }
 
-  openForm = () => {
-    this.setState({
-      open: true
-    })
-  }
+  openForm = () => this.setState({ open: true })
 
-  closeForm = () => {
-    this.setState({
-      open: false
-    })
-  }
+  closeForm = () => this.setState({ open: false })
 
   handleInputChange = event => {
     this.setState({
@@ -43,14 +35,14 @@ class FormContainer extends Component {
   }
 
   handleAddCard = () => {
-    const { dispatch, listID } = this.props
+    const { dispatch, ListId } = this.props
     const { text } = this.state
 
     if (text) {
       this.setState({
         text: ''
       })
-      dispatch(addCard(listID, text))
+      dispatch(addCard(ListId, text))
     }
   }
 
