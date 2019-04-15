@@ -2,6 +2,7 @@
 import React from 'react'
 /** @jsx jsx */
 import { css, jsx } from '@emotion/core'
+import Button from '../button'
 
 const textArea = css`
   resize: none;
@@ -39,9 +40,9 @@ const Form = ({
         onChange={handleInputChange}
         css={textArea}
       />
-      <button css={button} onMouseDown={onMouse}>
+      <Button css={button} onMouseDown={onMouse}>
         {label}
-      </button>
+      </Button>
     </div>
   )
 }

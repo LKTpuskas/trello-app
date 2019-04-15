@@ -25,11 +25,12 @@ const listsContainer = css`
 class App extends Component {
   // Enables us to reset the state
   // in the context of local storage,
-  // for development purposes
+  // useful for development purposes
   onPurgeStoredState = e => {
     e.preventDefault()
 
-    const { dispatch } = this.props // Grab a ref to the mapped dispatch method
+    // Grab a ref to the mapped dispatch method
+    const { dispatch } = this.props
 
     // Create and dispatch the action
     // which will cause redux-persist to purge
@@ -43,22 +44,22 @@ class App extends Component {
     })
   }
 
+  // Our logic for card dragging and dropping
   onDragEnd = result => {
     const { destination, source } = result
     const { dispatch } = this.props
-    // if no destination, e.g. if we drag a card
+
+    // If no destination, e.g. user drags a card
     // outside of the droppable area, i.e. list
-    // then just return null and thus don't perform draging/dropping
+    // return null and don't perform draging/dropping
     if (!destination) {
       return
     }
 
-    // if there is a destination, run our logic
-    // these come from the dnd package - the source and destination objects
-    // draggableId is the id of the card we're dragging
-    // destination is where we landed
-    // source is where the dragging happens
-    // both source and destination house droppableId and index
+    // If there is a destination, run our logic
+    // these come from the dnd package - the source and destination objects.
+    // Destination is where we landed,
+    // source is where the dragging happened
     dispatch(
       dnd(
         source.droppableId,
@@ -75,7 +76,7 @@ class App extends Component {
       <DragDropContext onDragEnd={this.onDragEnd}>
         <div css={board}>
           <h1 css={title}>{'Your Trello board'}</h1>
-          <button onClick={this.onPurgeStoredState}>Reset state</button>
+          <button onClick={this.onPurgeStoredState}>{'Reset state'}</button>
           <div css={listsContainer}>
             {lists &&
               lists.map(list => {
@@ -101,10 +102,10 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => {
+  // Used for purging
   // Map dispatch method to this.props.dispatch
   return { dispatch }
 }
-
 
 export default connect(
   mapStateToProps,

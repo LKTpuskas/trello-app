@@ -3,34 +3,18 @@ import React from 'react'
 /** @jsx jsx */
 import { css, jsx } from '@emotion/core'
 
-const button = (
-  buttonTextOpacity,
-  buttonTextColor,
-  buttonTextBackground
-) => css`
+const button = css`
   display: flex;
   align-items: center;
   cursor: pointer;
   border-radius: 3px;
   height: 40px;
   padding: 10px;
-  opacity: ${buttonTextOpacity};
-  color: ${buttonTextColor};
-  background-color: ${buttonTextBackground}};
 `
 
-const Button = ({
-  openForm,
-  buttonTextOpacity,
-  buttonTextColor,
-  buttonTextBackground,
-  children
-}) => {
+const Button = ({ children, ...props }) => {
   return (
-    <button
-      css={button(buttonTextOpacity, buttonTextColor, buttonTextBackground)}
-      onClick={openForm}
-    >
+    <button css={button} {...props}>
       {children}
     </button>
   )

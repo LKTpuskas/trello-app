@@ -1,5 +1,7 @@
 // eslint-disable-next-line no-unused-vars
 import React, { Component } from 'react'
+/** @jsx jsx */
+import { css, jsx } from '@emotion/core'
 import { connect } from 'react-redux'
 import { addList, addCard } from '../../actions'
 import Form from '../form'
@@ -7,18 +9,18 @@ import Button from '../button'
 
 class FormContainer extends Component {
   state = {
-    formOpen: false
+    open: false
   }
 
   openForm = () => {
     this.setState({
-      formOpen: true
+      open: true
     })
   }
 
-  closeForm = e => {
+  closeForm = () => {
     this.setState({
-      formOpen: false
+      open: false
     })
   }
 
@@ -54,16 +56,12 @@ class FormContainer extends Component {
 
   render() {
     const { list } = this.props
-    const { formOpen } = this.state
-    const placeholder = list ? 'Enter list title' : 'Enter a card title'
-    const label = list ? 'Add list' : 'Add card'
+    const { open } = this.state
+    const placeholder = `Enter ${list ? 'list' : 'card'} title`
+    const label = `Add ${list ? 'list' : 'card'}`
     const onMouse = list ? this.handleAddList : this.handleAddCard
-
-    const buttonLabel = list ? '+ Add another list' : '+ Add another card'
-    const buttonTextOpacity = list ? 1 : 0.5
-    const buttonTextColor = list ? 'white' : 'inherit'
-    const buttonTextBackground = list ? 'rgba(0,0,0,.15)' : 'inherit'
-    return formOpen ? (
+    const buttonLabel = `+ Add another ${list ? 'list' : 'card'}`
+    return open ? (
       <Form
         placeholder={placeholder}
         closeForm={this.closeForm}
@@ -74,10 +72,12 @@ class FormContainer extends Component {
       />
     ) : (
       <Button
-        openForm={this.openForm}
-        buttonTextOpacity={buttonTextOpacity}
-        buttonTextColor={buttonTextColor}
-        buttonTextBackground={buttonTextBackground}
+        onClick={this.openForm}
+        css={css`
+          opacity: ${list ? 1 : 0.5};
+          color: ${list && 'white'};
+          background: ${list && 'rgba(0,0,0,.15)'};
+        `}
       >
         {buttonLabel}
       </Button>

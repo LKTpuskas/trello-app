@@ -34,7 +34,7 @@ const icons = {
 
 const getDueDateStatus = dueDate => {
   const now = new Date()
-  // here we store our desired difference in days
+  // Here we store our desired difference in days
   // i.e. 3 days is the value we're comparing against
   const desiredDifference = -2
   const difference = differenceInDays(now, dueDate)
@@ -71,6 +71,7 @@ const Card = ({ title, id, index, description, dueDate }) => {
     </Draggable>
   )
 }
+
 Card.defaultProps = {
   title: "Hey! I'm your default title",
   description: "Hello! I'm your default description",
