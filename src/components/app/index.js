@@ -19,7 +19,7 @@ const header = css`
   display: flex;
   justify-content: center;
   padding-top: 1rem;
-  margin-bottom: 1rem;
+  margin-bottom: 3rem;
 `
 
 const listsContainer = css`
@@ -83,8 +83,8 @@ class App extends Component {
           <header css={header}>
             <h1>{'My Awesome Board 💥'}</h1>
           </header>
-
-          <button onClick={this.onPurgeStoredState}>{'Reset state'}</button>
+          {/* Use the below button to reset the app if needed, for development purposes  */}
+          {/* <button onClick={this.onPurgeStoredState}>{'Reset state'}</button> */}
           <div css={listsContainer}>
             {lists &&
               lists.map(list => {
