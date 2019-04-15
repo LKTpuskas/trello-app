@@ -23,9 +23,6 @@ const icon = css`
   top: 10px;
   right: 10px;
 `
-const contentContainer = css`
-  width: 85%;
-`
 
 const icons = {
   overdue: IconDot,
@@ -61,7 +58,11 @@ const Card = ({ title, id, index, description, dueDate }) => {
           ref={provided.innerRef}
         >
           {showIcon && <Icon customStyle={icon} />}
-          <div css={contentContainer}>
+          <div
+            css={css`
+              width: 85%;
+            `}
+          >
             <h2>{title}</h2>
             <div> {description}</div>
             <div> {dueDate}</div>
@@ -71,7 +72,6 @@ const Card = ({ title, id, index, description, dueDate }) => {
     </Draggable>
   )
 }
-
 Card.defaultProps = {
   title: "Hey! I'm your default title",
   description: "Hello! I'm your default description",

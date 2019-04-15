@@ -1,44 +1,13 @@
 import { CONSTANTS } from '../../actions'
 import { PURGE } from 'redux-persist'
+import initialData from '../../config/data'
 
 let listID = 7
 let cardID = 8
 
-const initialState = [
-  {
-    title: 'List 1',
-    id: 0,
-    cards: [
-      {
-        id: 1,
-        text: 'Hello! Card 1'
-      },
-      {
-        id: 2,
-        text: 'Hej! Card 2'
-      }
-    ]
-  },
-  {
-    title: 'List 2',
-    id: 3,
-    cards: [
-      {
-        id: 4,
-        text: 'Hallo! Card 1'
-      },
-      {
-        id: 5,
-        text: 'Zivijo! Card 2'
-      },
-      {
-        id: 6,
-        text: 'Ciao! Card 3'
-      }
-    ]
-  }
-]
+const initialState = initialData
 
+// take the state but if you dont receive it, fall back to initial state and return it
 const listsReducer = (state = initialState, action) => {
   switch (action.type) {
     // a new list starts with an empty cards array
@@ -122,7 +91,8 @@ const listsReducer = (state = initialState, action) => {
       return newState
     }
     case PURGE: {
-      return initialState // Return the initial state of this reducer to 'reset' the app
+      // Return the initial state of this reducer to 'reset' the app
+      return initialState
     }
     default:
       return state

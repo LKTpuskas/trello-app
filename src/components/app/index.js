@@ -1,5 +1,6 @@
 // eslint-disable-next-line no-unused-vars
 import React, { Component } from 'react'
+// we expose jsx in Create-React-App, as per emotion docs
 /** @jsx jsx */
 import { css, jsx } from '@emotion/core'
 import { PURGE } from 'redux-persist'
@@ -8,14 +9,6 @@ import { connect } from 'react-redux'
 import List from '../list'
 import FormContainer from '../form-container'
 import { dnd } from '../../actions'
-
-const board = css`
-  padding: 10px;
-`
-
-const title = css`
-  margin-bottom: 10px;
-`
 
 const listsContainer = css`
   display: flex;
@@ -26,8 +19,8 @@ class App extends Component {
   // Enables us to reset the state
   // in the context of local storage,
   // useful for development purposes
-  onPurgeStoredState = e => {
-    e.preventDefault()
+  onPurgeStoredState = event => {
+    event.preventDefault()
 
     // Grab a ref to the mapped dispatch method
     const { dispatch } = this.props
@@ -74,8 +67,18 @@ class App extends Component {
     const { lists } = this.props
     return (
       <DragDropContext onDragEnd={this.onDragEnd}>
-        <div css={board}>
-          <h1 css={title}>{'Your Trello board'}</h1>
+        <div
+          css={css`
+            padding: 10px;
+          `}
+        >
+          <h1
+            css={css`
+              margin-bottom: 10px;
+            `}
+          >
+            {'Your Trello board'}
+          </h1>
           <button onClick={this.onPurgeStoredState}>{'Reset state'}</button>
           <div css={listsContainer}>
             {lists &&
