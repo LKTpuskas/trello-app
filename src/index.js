@@ -5,12 +5,23 @@ import { Provider } from 'react-redux'
 import Store from './store'
 import App from './components/app'
 import * as serviceWorker from './serviceWorker'
+import { Global, css } from '@emotion/core'
 
 const { persistor, store } = Store()
 
 ReactDOM.render(
   <Provider store={store}>
     <PersistGate loading={null} persistor={persistor}>
+      <Global
+        styles={css`
+          * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Montserrat', sans-serif;
+          }
+        `}
+      />
       <App />
     </PersistGate>
   </Provider>,

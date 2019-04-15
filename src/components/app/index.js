@@ -1,4 +1,3 @@
-// eslint-disable-next-line no-unused-vars
 import React, { Component } from 'react'
 // we expose jsx in Create-React-App, as per emotion docs
 /** @jsx jsx */
@@ -9,6 +8,19 @@ import { connect } from 'react-redux'
 import List from '../list'
 import FormContainer from '../form-container'
 import { dnd } from '../../actions'
+
+const container = css`
+  background: #b69cce;
+  min-height: 100vh;
+  padding: 0.5rem;
+`
+
+const header = css`
+  display: flex;
+  justify-content: center;
+  padding-top: 1rem;
+  margin-bottom: 1rem;
+`
 
 const listsContainer = css`
   display: flex;
@@ -67,18 +79,11 @@ class App extends Component {
     const { lists } = this.props
     return (
       <DragDropContext onDragEnd={this.onDragEnd}>
-        <div
-          css={css`
-            padding: 10px;
-          `}
-        >
-          <h1
-            css={css`
-              margin-bottom: 10px;
-            `}
-          >
-            {'Your Trello board'}
-          </h1>
+        <div css={container}>
+          <header css={header}>
+            <h1>{'My Awesome Board 💥'}</h1>
+          </header>
+
           <button onClick={this.onPurgeStoredState}>{'Reset state'}</button>
           <div css={listsContainer}>
             {lists &&

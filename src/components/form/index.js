@@ -1,4 +1,3 @@
-// eslint-disable-next-line no-unused-vars
 import React from 'react'
 /** @jsx jsx */
 import { css, jsx } from '@emotion/core'
@@ -8,18 +7,15 @@ const textArea = css`
   resize: none;
   width: 100%;
   outline: none;
-  background: yellow;
+  font-size: 16px;
+  border: none;
+  padding: 0.5rem;
+  margin-bottom: 0.5rem;
 `
 
 const container = css`
   min-height: auto;
   padding: 10px;
-`
-
-const button = css`
-  background-color: purple;
-  cursor: pointer;
-  padding: 8px 10px;
 `
 
 const Form = ({
@@ -40,9 +36,7 @@ const Form = ({
         onChange={handleInputChange}
         css={textArea}
       />
-      <Button css={button} onMouseDown={onMouse}>
-        {label}
-      </Button>
+      <Button onMouseDown={onMouse}>{label}</Button>
     </div>
   )
 }

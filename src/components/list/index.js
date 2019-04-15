@@ -1,4 +1,3 @@
-// eslint-disable-next-line no-unused-vars
 import React from 'react'
 /** @jsx jsx */
 import { css, jsx } from '@emotion/core'
@@ -10,10 +9,15 @@ import FormContainer from '../form-container'
 const container = css`
   background-color: #dfe3e6;
   border-radius: 3px;
-  width: 300px;
-  padding: 8px;
+  width: 350px;
+  padding: 14px;
   height: 100%;
   margin: 0 8px 0 0;
+`
+
+const listTitle = css`
+  padding-bottom: 0.5rem;
+  margin-left: 0.5rem;
 `
 
 const List = ({ title, cards, listID }) => {
@@ -25,7 +29,7 @@ const List = ({ title, cards, listID }) => {
           {...provided.droppableProps}
           ref={provided.innerRef}
         >
-          {title}
+          <h2 css={listTitle}>{title}</h2>
           {cards &&
             cards.map((card, index) => (
               <Card
