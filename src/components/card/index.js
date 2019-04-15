@@ -13,11 +13,11 @@ const CardContainer = css`
   padding: 10px;
 `
 
-const Card = ({ title, description, dueDate }) => (
+const Card = ({ text, description, dueDate }) => (
   <div css={CardContainer}>
-    <h2>{title}</h2>
-    <div>{description}</div>
-    <div>{dueDate}</div>
+    <h2>{text}</h2>
+    <div> {description}</div>
+    <div> {dueDate}</div>
   </div>
 )
 

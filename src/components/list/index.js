@@ -1,8 +1,9 @@
 // eslint-disable-next-line no-unused-vars
 import React from 'react'
-import Card from '../card'
 /** @jsx jsx */
 import { css, jsx } from '@emotion/core'
+
+import Card from '../card'
 
 const ListContainer = css`
   background-color: #dfe3e6;
@@ -13,22 +14,13 @@ const ListContainer = css`
   margin: 0 8px 0 0;
 `
 
-const List = ({ name, cards }) => (
-  <div css={ListContainer}>
-    {name}
-    <div>
-      {cards.map((card, index) => (
-        <Card
-          key={card.id}
-          id={card.id}
-          index={index}
-          title={card.title}
-          description={card.description}
-          dueDate={card.dueDate}
-        />
-      ))}
+const List = ({ title, cards }) => {
+  return (
+    <div css={ListContainer}>
+      {title}
+      {cards && cards.map(card => <Card text={card.text} />)}
     </div>
-  </div>
-)
+  )
+}
 
 export default List

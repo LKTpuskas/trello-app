@@ -1,10 +1,10 @@
-// CRA-specific config: the below eslint-ignore and emotion jsx
 // eslint-disable-next-line no-unused-vars
 import React, { Component } from 'react'
-import List from '../list'
-import lists from '../../config/data'
 /** @jsx jsx */
 import { css, jsx } from '@emotion/core'
+
+import List from '../list'
+import { connect } from 'react-redux'
 
 const board = css`
   padding: 10px;
@@ -21,24 +21,23 @@ const listsContainer = css`
 
 class App extends Component {
   render() {
+    const { lists } = this.props
     return (
       <div css={board}>
         <h1 css={title}>{'Your Trello board'}</h1>
         <div css={listsContainer}>
           {lists &&
-            lists.map((list, index) => (
-              <List
-                key={list.id}
-                index={index}
-                id={list.id}
-                name={list.name}
-                cards={list.cards}
-              />
-            ))}
+            lists.map(list => {
+              return <List title={list.title} cards={list.cards} />
+            })}
         </div>
       </div>
     )
   }
 }
 
-export default App
+const mapStateToProps = state => ({
+  lists: state.lists
+})
+
+export default connect(mapStateToProps)(App)
