@@ -2,10 +2,12 @@
 import React from 'react'
 /** @jsx jsx */
 import { css, jsx } from '@emotion/core'
-
+import { Droppable } from 'react-beautiful-dnd'
+import PropTypes from 'prop-types'
 import Card from '../card'
+import FormContainer from '../form-container'
 
-const ListContainer = css`
+const container = css`
   background-color: #dfe3e6;
   border-radius: 3px;
   width: 300px;
@@ -14,13 +16,41 @@ const ListContainer = css`
   margin: 0 8px 0 0;
 `
 
-const List = ({ title, cards }) => {
+const List = ({ title, cards, listID }) => {
   return (
-    <div css={ListContainer}>
-      {title}
-      {cards && cards.map(card => <Card text={card.text} />)}
-    </div>
+    <Droppable droppableId={String(listID)}>
+      {provided => (
+        <div
+          css={container}
+          {...provided.droppableProps}
+          ref={provided.innerRef}
+        >
+          {title}
+          {cards &&
+            cards.map((card, index) => (
+              <Card
+                key={card.id}
+                id={card.id}
+                title={card.text}
+                index={index}
+              />
+            ))}
+          {provided.placeholder}
+          <FormContainer listID={listID} />
+        </div>
+      )}
+    </Droppable>
   )
+}
+
+List.defaultProps = {
+  title: "Hey! I'm your default list name"
+}
+
+List.propTypes = {
+  title: PropTypes.string.isRequired,
+  cards: PropTypes.array,
+  listID: PropTypes.number
 }
 
 export default List
