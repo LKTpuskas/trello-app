@@ -16,11 +16,7 @@ class FormContainer extends Component {
 
   closeForm = () => this.setState({ open: false })
 
-  handleInputChange = event => {
-    this.setState({
-      text: event.target.value
-    })
-  }
+  handleInputChange = event => this.setState({ text: event.target.value })
 
   handleAddList = () => {
     const { dispatch } = this.props
@@ -66,8 +62,8 @@ class FormContainer extends Component {
       <Button
         onClick={this.openForm}
         css={css`
-          opacity: ${list ? 1 : 0.5};
-          color: ${list && 'white'};
+          opacity: ${list ? 1 : 0.6};
+          color: ${list && '#fff'};
           background: ${list && 'rgba(0,0,0,.15)'};
         `}
       >

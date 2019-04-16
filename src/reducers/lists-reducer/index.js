@@ -7,13 +7,11 @@ let CardId = 8
 
 const initialState = initialData
 
-// take the state but if you dont receive it, fall back to initial state and return it
 const listsReducer = (state = initialState, action) => {
   switch (action.type) {
-    // a new list starts with an empty cards array
-    // incrmeent a list by one
-    // return an empty array becayse our state is an array
-    // spead in our current lists - initial data - and add new lists
+    // A new list starts with an empty cards array
+    // increment a list id by one, so it's unique
+    // spead our current lists (initial data) and add new lists
     case CONSTANTS.ADD_LIST: {
       const { title } = action.payload
       const newList = {
@@ -33,9 +31,9 @@ const listsReducer = (state = initialState, action) => {
       }
       CardId += 1
 
-      // Map over lists, see if their id is the same as the payload id of cards
-      // spead the lists array and current cards - initial state
-      // and add the new cards at the end
+      // Map over lists, see if their id is the same as the payload id
+      // spead the lists array, as well as current cards (initial state)
+      // add the new cards at the end
       // so we don't modify the existing state
       const newState = state.map(list => {
         if (list.id === ListId) {
@@ -60,7 +58,7 @@ const listsReducer = (state = initialState, action) => {
 
       const newState = [...state]
 
-      // if cards are moved within the same list
+      // If cards are moved within the same list
       if (droppableIdStart === droppableIdEnd) {
         // we grab our list in which the drag happened
         const list = state.find(list => Number(droppableIdStart) === list.id)

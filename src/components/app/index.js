@@ -1,3 +1,4 @@
+// CRA-specific rules: eslint and emotion / jsx 
 // eslint-disable-next-line no-unused-vars
 import React, { Component } from 'react'
 /** @jsx jsx */
@@ -12,7 +13,7 @@ import { dnd } from '../../actions'
 const container = css`
   background: #b69cce;
   min-height: 100vh;
-  padding: 0.5rem;
+  padding: 1rem;
 `
 
 const header = css`
@@ -62,7 +63,7 @@ class App extends Component {
     }
 
     // If there is a destination, run our logic
-    // these come from the dnd package - the source and destination objects.
+    // using the source and destination objects from the dnd package.
     // Destination is where we landed,
     // source is where the dragging happened
     dispatch(
