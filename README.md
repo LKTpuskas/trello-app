@@ -1,6 +1,6 @@
 # Trello App
 
-Simple Trello App. For the features included, please see this [PR](https://github.com/evatd/trello-app/pull/1).
+For the features included, please see this [PR](https://github.com/evatd/trello-app/pull/1).
 
 ## To start
 
